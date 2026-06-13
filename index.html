@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoHeal — The Nature Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF9EF;
+    --forest:#1B4332;
+    --leaf:#52B788;
+    --sun:#FFC93C;
+    --coral:#FF6B5C;
+    --sky:#4EA8DE;
+    --ink:#1B2A22;
+    --paper:#FFFFFF;
+    --r-lg: 28px;
+    --r-md: 16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Plus Jakarta Sans', sans-serif; background:var(--cream); color:var(--ink); overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Fraunces', serif;}
+  .hand{font-family:'Caveat', cursive;}
+  a{text-decoration:none; color:inherit;}
+
+  /* NAV */
+  header{position:sticky; top:0; z-index:50; background:rgba(255,249,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid rgba(27,67,50,0.08);}
+  .nav-wrap{max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 24px;}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.4rem; color:var(--forest);}
+  .logo .mark{width:34px; height:34px; flex-shrink:0;}
+  .nav-links{display:flex; gap:22px; align-items:center; font-weight:600; font-size:0.92rem;}
+  .nav-links a{position:relative; padding:4px 0; color:var(--forest);}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--leaf); transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-actions{display:flex; gap:10px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:0.92rem; padding:11px 22px; border-radius:999px; border:2px solid transparent; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .2s, color .2s; white-space:nowrap;}
+  .btn-primary{background:var(--leaf); color:var(--forest); box-shadow:0 4px 0 #3a9a73;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 6px 0 #3a9a73;}
+  .btn-ghost{background:transparent; border-color:var(--forest); color:var(--forest);}
+  .btn-ghost:hover{background:var(--forest); color:var(--cream);}
+  .btn-sun{background:var(--sun); color:var(--forest); box-shadow:0 4px 0 #d9a626;}
+  .btn-sun:hover{transform:translateY(-2px); box-shadow:0 6px 0 #d9a626;}
+  @media(max-width:860px){.nav-links{display:none;}}
+
+  /* HERO */
+  .hero{max-width:1100px; margin:0 auto; padding:70px 24px 50px; text-align:center; display:flex; flex-direction:column; align-items:center;}
+  .hero .badge{font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--coral); margin-bottom:6px;}
+  .hero h1{font-size:clamp(2.6rem,7vw,5rem); line-height:1.05; font-weight:700; color:var(--forest); letter-spacing:-1px; max-width:760px;}
+  .hero h1 .accent{color:var(--leaf); font-style:italic;}
+  .hero p.lead{margin-top:18px; font-size:1.15rem; line-height:1.6; color:#3d4f44; max-width:560px;}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; justify-content:center;}
+
+  /* SECTION SHELL */
+  section{max-width:1100px; margin:0 auto; padding:60px 24px;}
+  .section-head{margin-bottom:32px; max-width:700px;}
+  .tag{display:inline-block; font-size:0.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--leaf); background:rgba(82,183,136,0.12); padding:6px 14px; border-radius:999px; margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.8rem); color:var(--forest); font-weight:600; line-height:1.15;}
+  .section-head p{margin-top:12px; font-size:1.05rem; color:#5a6b60; line-height:1.6;}
+
+  /* ABOUT / VISION */
+  .story-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media(max-width:780px){.story-grid{grid-template-columns:1fr;}}
+  .story-card{background:var(--paper); border-radius:var(--r-lg); padding:34px; box-shadow:0 6px 20px rgba(27,67,50,0.05);}
+  .story-card .ico{font-size:2.4rem; margin-bottom:14px;}
+  .story-card h3{font-size:1.5rem; color:var(--forest); font-weight:600; margin-bottom:12px;}
+  .story-card p{color:#5a6b60; line-height:1.75; font-size:1rem;}
+
+  /* HOW IT WORKS - platform model */
+  .model{
+    background:var(--paper); border-radius:var(--r-lg); padding:40px; box-shadow:0 6px 20px rgba(27,67,50,0.05);
+  }
+  .model-row{display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;}
+  @media(max-width:860px){.model-row{grid-template-columns:1fr;}}
+  .model-col h4{font-size:0.82rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--leaf); margin-bottom:14px; text-align:center;}
+  .model-items{display:flex; flex-direction:column; gap:10px;}
+  .model-pill{
+    background:#F6FBF8; border:2px solid #E3F2EA; border-radius:14px; padding:12px 16px;
+    font-size:0.9rem; font-weight:700; color:var(--forest); text-align:center;
+  }
+  .model-center{
+    display:flex; flex-direction:column; align-items:center; gap:14px; padding:20px;
+  }
+  .model-center .arrow{font-size:1.8rem; color:var(--leaf);}
+  @media(max-width:860px){.model-center .arrow{transform:rotate(90deg);}}
+  .model-hub{
+    background:linear-gradient(135deg,var(--leaf),var(--sky)); color:#fff; border-radius:18px;
+    padding:22px 28px; text-align:center; font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700;
+    box-shadow:0 8px 20px rgba(82,183,136,0.3);
+  }
+  .model-hub span{display:block; font-size:0.78rem; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif; opacity:0.9; margin-top:4px; letter-spacing:.05em;}
+
+  /* PHASE 1 FEATURES */
+  .feature-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px;}
+  .feature-card{
+    background:var(--paper); border-radius:var(--r-md); padding:24px;
+    box-shadow:0 6px 18px rgba(27,67,50,0.05); border:2px solid transparent;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .feature-card:hover{transform:translateY(-4px); border-color:var(--leaf);}
+  .feature-card .ico{font-size:1.8rem; margin-bottom:10px;}
+  .feature-card h4{font-size:1.02rem; color:var(--forest); font-weight:600; margin-bottom:6px;}
+  .feature-card p{font-size:0.88rem; color:#6b7b71; line-height:1.5;}
+  .phase-badge{
+    display:inline-flex; align-items:center; gap:6px; background:var(--sun); color:var(--forest);
+    font-weight:800; font-size:0.78rem; padding:6px 14px; border-radius:999px; margin-bottom:14px;
+  }
+
+  /* SERVICE PROVIDER STATUS */
+  .status-list{display:flex; flex-direction:column; gap:12px;}
+  .status-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    background:var(--paper); border-radius:14px; padding:16px 22px;
+    box-shadow:0 4px 14px rgba(27,67,50,0.04);
+  }
+  .status-row .name{font-weight:700; color:var(--forest); font-size:1rem;}
+  .status-row .name span{display:block; font-size:0.8rem; color:#8aa399; font-weight:500; margin-top:2px;}
+  .status-pill{font-size:0.78rem; font-weight:800; padding:6px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em; white-space:nowrap;}
+  .status-active{background:#E3F6EE; color:var(--forest);}
+  .status-progress{background:#FFF1D6; color:#a17000;}
+  .status-soon{background:#FFE5E1; color:#c1463a;}
+  .status-connect{background:#E5F2FB; color:#2c6f9c;}
+
+  /* CONTACT */
+  .contact{
+    background:var(--forest); border-radius:var(--r-lg); padding:50px 40px; color:var(--cream);
+    display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; position:relative; overflow:hidden;
+  }
+  @media(max-width:780px){.contact{grid-template-columns:1fr;}}
+  .contact::before{content:''; position:absolute; right:-60px; bottom:-60px; width:220px; height:220px; background:var(--sun); border-radius:50%; opacity:0.12;}
+  .contact h2{color:#fff; font-size:clamp(1.8rem,3.5vw,2.6rem); margin-bottom:14px; font-weight:600;}
+  .contact p{color:#cfe8db; line-height:1.7; font-size:1.02rem;}
+  .contact-card{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:var(--r-md); padding:28px;}
+  .contact-card .row{display:flex; gap:12px; align-items:flex-start; margin-bottom:16px;}
+  .contact-card .row:last-child{margin-bottom:0;}
+  .contact-card .row .ico{font-size:1.3rem;}
+  .contact-card .row div strong{display:block; font-size:0.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--sun); margin-bottom:2px;}
+  .contact-card .row div span{font-size:0.98rem; color:#fff;}
+
+  /* CONCLUSION / CAMPAIGN */
+  .campaign{
+    background:linear-gradient(135deg,var(--leaf),var(--sky)); border-radius:var(--r-lg); padding:60px 40px; text-align:center; color:#fff;
+  }
+  .campaign h2{color:#fff; font-size:clamp(1.9rem,4vw,2.8rem); margin-bottom:14px; font-weight:600;}
+  .campaign p{max-width:620px; margin:0 auto 30px; line-height:1.75; font-size:1.05rem; color:#eafbf2;}
+  .campaign-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .campaign .btn-primary{background:#fff; color:var(--forest); box-shadow:0 4px 0 rgba(0,0,0,0.15);}
+  .campaign .btn-ghost{border-color:#fff; color:#fff;}
+  .campaign .btn-ghost:hover{background:#fff; color:var(--forest);}
+
+  /* FOOTER */
+  footer{background:var(--forest); color:#cfe8db; padding:40px 24px;}
+  .foot-wrap{max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .foot-wrap .logo{color:#fff;}
+  .foot-links{display:flex; gap:18px; font-size:0.9rem; flex-wrap:wrap;}
+  .foot-links a{color:#a9c9b8;}
+  .foot-links a:hover{color:var(--sun);}
+  .foot-bottom{max-width:1100px; margin:24px auto 0; padding-top:18px; border-top:1px solid rgba(255,255,255,0.08); font-size:0.82rem; color:#82a596; text-align:center;}
+
+  /* MODAL */
+  .modal-overlay{position:fixed; inset:0; background:rgba(27,67,50,0.5); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--paper); border-radius:var(--r-lg); padding:36px; max-width:380px; width:100%; position:relative;}
+  .modal h3{color:var(--forest); font-size:1.6rem; margin-bottom:6px; font-weight:600;}
+  .modal p.sub{color:#6b7b71; font-size:0.92rem; margin-bottom:22px;}
+  .modal label{font-size:0.85rem; font-weight:700; color:var(--forest); display:block; margin-bottom:6px; margin-top:14px;}
+  .modal input{width:100%; padding:12px 14px; border-radius:10px; border:2px solid #e6efe9; font-size:0.95rem; font-family:inherit; outline:none; transition:border-color .2s;}
+  .modal input:focus{border-color:var(--leaf);}
+  .modal .btn{width:100%; margin-top:22px;}
+  .modal-close{position:absolute; top:18px; right:18px; background:none; border:none; font-size:1.4rem; color:#9ab3a6; cursor:pointer;}
+  .modal-switch{text-align:center; margin-top:16px; font-size:0.88rem; color:#6b7b71;}
+  .modal-switch a{color:var(--leaf); font-weight:700;}
+
+  @media(max-width:480px){
+    .hero-actions, .campaign-actions{flex-direction:column; width:100%;}
+    .btn{width:100%;}
+    .foot-wrap{flex-direction:column; text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="nav-wrap">
+    <a href="#home" class="logo">
+      <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" fill="#52B788"/>
+        <path d="M20 30C20 30 11 25 11 17C11 12 14.5 9 19 9C19 14 20 20 20 30Z" fill="#1B4332"/>
+        <path d="M20 30C20 30 29 25 29 17C29 12 25.5 9 21 9C21 14 20 20 20 30Z" fill="#FFC93C"/>
+      </svg>
+      EcoHeal
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#vision">Vision</a>
+      <a href="#how">How It Works</a>
+      <a href="#phase1">Get Started</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openModal('login')">Log in</button>
+      <button class="btn btn-primary" onclick="openModal('register')">Register</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="badge">🌿 The Nature Solution</div>
+  <h1>EcoHeal — connecting people <span class="accent">with nature's experts.</span></h1>
+  <p class="lead">An online platform bridging nature lovers, researchers, forest experts, and consultants with people, industries, and governments who need sustainable, nature-based solutions.</p>
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="openModal('register')">🌱 Register as Natural Lover</button>
+    <a href="#how" class="btn btn-ghost">How it works</a>
+  </div>
+</section>
+
+<!-- ABOUT + VISION -->
+<section id="about">
+  <div class="section-head">
+    <span class="tag">About EcoHeal</span>
+    <h2>What is EcoHeal, and what do we want?</h2>
+  </div>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="ico">🌍</div>
+      <h3>About Us</h3>
+      <p>EcoHeal is an online platform which connects people across India and the world. It bridges nature lovers, researchers, forest experts, and consultants with communities, industries, and governments who seek sustainable, nature-based solutions.</p>
+    </div>
+    <div class="story-card" id="vision">
+      <div class="ico">💚</div>
+      <h3>Our Vision</h3>
+      <p>Our vision is simple: to create an environmentally friendly and sustainable world. EcoHeal will bring resilience to people and communities, industries and governments — preparing everyone for modern challenges.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-head">
+    <span class="tag">Platform model</span>
+    <h2>How will it work?</h2>
+    <p>EcoHeal connects three types of people seeking nature-based solutions to a network of trusted service providers.</p>
+  </div>
+  <div class="model">
+    <div class="model-row">
+      <div class="model-col">
+        <h4>Who EcoHeal is for</h4>
+        <div class="model-items">
+          <div class="model-pill">👤 People / Households</div>
+          <div class="model-pill">🏛️ Govt. / NGOs / Institutions</div>
+          <div class="model-pill">🏭 Industries</div>
+        </div>
+      </div>
+      <div class="model-center">
+        <div class="model-hub">EcoHeal<span>The Platform</span></div>
+      </div>
+      <div class="model-col">
+        <h4>Service provider network</h4>
+        <div class="model-items">
+          <div class="model-pill">🌿 Nature Lovers</div>
+          <div class="model-pill">🔬 Research Programme Teams</div>
+          <div class="model-pill">🌲 Forest Experts</div>
+          <div class="model-pill">🧭 Consultants</div>
+          <div class="model-pill">📩 Contact Us Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 1 -->
+<section id="phase1">
+  <div class="section-head">
+    <span class="tag">Phase 1 — Initial Launch</span>
+    <h2>Get started as a Natural Lover</h2>
+    <p>Initially, EcoHeal activates the Natural Lover community first — the platform goes live with nature-related content written by our team. Here's what members can do.</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="ico">📰</div><h4>Read our content</h4><p>Nature-related articles written in-house by our team.</p></div>
+    <div class="feature-card"><div class="ico">📊</div><h4>Recent reports</h4><p>Stay updated with the latest reports we publish.</p></div>
+    <div class="feature-card"><div class="ico">🤝</div><h4>Publications &amp; Collaborations</h4><p>See work created with partner organisations.</p></div>
+    <div class="feature-card"><div class="ico">📖</div><h4>Silent reading sessions</h4><p>Join quiet, focused community reading sessions.</p></div>
+    <div class="feature-card"><div class="ico">📅</div><h4>Scheduled programmes</h4><p>Be part of our planned events and activities.</p></div>
+    <div class="feature-card"><div class="ico">🎤</div><h4>Volunteer, lead, or speak</h4><p>Join as a volunteer, leader, speaker, or enthusiast.</p></div>
+    <div class="feature-card"><div class="ico">🌱</div><h4>Contribute-to-nature credits</h4><p>Earn recognition for your contributions.</p></div>
+    <div class="feature-card"><div class="ico">🪪</div><h4>Membership</h4><p>Become an official EcoHeal member.</p></div>
+  </div>
+</section>
+
+<!-- SERVICE PROVIDER STATUS -->
+<section>
+  <div class="section-head">
+    <span class="tag">Where we are</span>
+    <h2>Service provider network status</h2>
+    <p>An honest look at where each part of the network stands today.</p>
+  </div>
+  <div class="status-list">
+    <div class="status-row"><div class="name">Natural Lover<span>Nature content, reading sessions, programmes</span></div><span class="status-pill status-active">Active — Phase 1</span></div>
+    <div class="status-row"><div class="name">Research Programme<span>Independent studies &amp; sustainable solutions</span></div><span class="status-pill status-soon">Not started yet</span></div>
+    <div class="status-row"><div class="name">Forest Experts<span>Specialist guidance &amp; field knowledge</span></div><span class="status-pill status-progress">Project ongoing</span></div>
+    <div class="status-row"><div class="name">Consultants<span>For MSMEs, industries, NGOs &amp; govt.</span></div><span class="status-pill status-connect">Reach out to connect</span></div>
+    <div class="status-row"><div class="name">Contact Us<span>General support</span></div><span class="status-pill status-active">Available</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact">
+    <div>
+      <span class="tag" style="background:rgba(255,255,255,0.12); color:#cfe8db;">Contact</span>
+      <h2>Get in touch</h2>
+      <p>EcoHeal is an early-stage, independent platform — reach out directly, we read every message.</p>
+    </div>
+    <div class="contact-card">
+      <div class="row"><span class="ico">📧</span><div><strong>Email</strong><span>Ecoheal123@gmail.com</span></div></div>
+      <div class="row"><span class="ico">📱</span><div><strong>Mobile</strong><span>+91-XXXXXXX72</span></div></div>
+      <div class="row"><span class="ico">🌐</span><div><strong>Platform</strong><span>EcoHeal (online)</span></div></div>
+      <div class="row"><span class="ico">🏷️</span><div><strong>Org type</strong><span>Self / Independent</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION / CAMPAIGN -->
+<section>
+  <div class="campaign">
+    <h2>An early-stage platform, a clear vision</h2>
+    <p>EcoHeal is just beginning — connecting people, communities, industries and governments with nature experts to build a more resilient, sustainable world. Phase 1 focuses on growing the Natural Lover community and publishing authentic nature content. Join us as a founding member and help shape what comes next.</p>
+    <div class="campaign-actions">
+      <button class="btn btn-primary" onclick="openModal('register')">🌱 Register now</button>
+      <button class="btn btn-ghost" onclick="openModal('login')">Log in</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-wrap">
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" fill="#52B788"/>
+        <path d="M20 30C20 30 11 25 11 17C11 12 14.5 9 19 9C19 14 20 20 20 30Z" fill="#1B4332"/>
+        <path d="M20 30C20 30 29 25 29 17C29 12 25.5 9 21 9C21 14 20 20 20 30Z" fill="#FFC93C"/>
+      </svg>
+      EcoHeal
+    </div>
+    <div class="foot-links">
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#phase1">Get Started</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="openModal('register');return false;">Register</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 EcoHeal — The Nature Solution. Early-stage &amp; independent.</div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  function openModal(type){
+    const overlay = document.getElementById('modalOverlay');
+    const content = document.getElementById('modalContent');
+    if(type === 'register'){
+      content.innerHTML = `
+        <h3>🌱 Join EcoHeal</h3>
+        <p class="sub">Become a Natural Lover — free to join.</p>
+        <label>Name</label>
+        <input type="text" placeholder="Your name">
+        <label>Email</label>
+        <input type="email" placeholder="you@email.com">
+        <label>Password</label>
+        <input type="password" placeholder="Create a password">
+        <button class="btn btn-primary" onclick="alert('Welcome to EcoHeal! (demo only)')">Create account</button>
+        <div class="modal-switch">Already have an account? <a href="#" onclick="openModal('login');return false;">Log in</a></div>
+      `;
+    } else {
+      content.innerHTML = `
+        <h3>Welcome back</h3>
+        <p class="sub">Log in to continue.</p>
+        <label>Email</label>
+        <input type="email" placeholder="you@email.com">
+        <label>Password</label>
+        <input type="password" placeholder="Your password">
+        <button class="btn btn-primary" onclick="alert('Logged in! (demo only)')">Log in</button>
+        <div class="modal-switch">New here? <a href="#" onclick="openModal('register');return false;">Create an account</a></div>
+      `;
+    }
+    overlay.classList.add('open');
+  }
+  function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+  function closeModalOnOverlay(e){if(e.target.id==='modalOverlay') closeModal();}
+</script>
+
+</body>
+</html>
