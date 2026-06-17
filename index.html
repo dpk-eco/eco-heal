@@ -58,7 +58,7 @@
   .hero{max-width:1100px;margin:0 auto;padding:60px 24px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;}
   .hero .badge{font-family:'Caveat',cursive;font-size:1.5rem;font-weight:700;color:var(--coral);margin-bottom:6px;}
   .hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;font-weight:700;color:var(--forest);letter-spacing:-1px;max-width:800px;}
-<h1>EcoHeal &#8212; <span class="accent">Connecting You With Nature</span></h1>
+  .hero h1 .accent{color:var(--leaf);font-style:italic;}
   .hero p.lead{margin-top:18px;font-size:1.1rem;line-height:1.6;color:#3d4f44;max-width:580px;}
   .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;justify-content:center;}
 
@@ -159,8 +159,7 @@
   .modal label{font-size:0.85rem;font-weight:700;color:var(--forest);display:block;margin-bottom:6px;margin-top:14px;}
   .modal input{width:100%;padding:12px 14px;border-radius:10px;border:2px solid #e6efe9;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s;}
   .modal input:focus{border-color:var(--leaf);}
-  .modal .btn{width:100%;margin-top:16px;}
-  .modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.4rem;color:#9ab3a6;cursor:pointer;}
+  .modal .btn{width:100%;margin-top:16px;}.modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.4rem;color:#9ab3a6;cursor:pointer;}
   .modal-switch{text-align:center;margin-top:12px;font-size:0.88rem;color:#6b7b71;}
   .modal-switch a{color:var(--leaf);font-weight:700;}
   .divider{display:flex;align-items:center;gap:10px;margin:16px 0;color:#9ab3a6;font-size:0.85rem;}
@@ -201,7 +200,7 @@
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announce">
-  &#127807; First Silent Reading Session coming soon &#8212; Mansarovar, Jaipur &nbsp;
+  &#127807; First Silent Reading Session coming soon &#8212; Mansarovar, Jaipur &nbsp;#127807; First Silent Reading Session coming soon &#127807; First Silent Reading Session coming soon &#8212; Mansarovar, Jaipur &nbsp;#8212; Mansarovar, Jaipur &#127807; First Silent Reading Session coming soon &#8212; Mansarovar, Jaipur &nbsp;nbsp;
   <a href="#" onclick="openSilentReading();return false;">Know more &#8594;</a>
 </div>
 
@@ -232,8 +231,8 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="badge">&#127807; The Nature Solution</div>
-  <h1>Connecting people with nature's experts &#8212; <span class="accent">connecting you with nature.</span></h1>
-  <p class="lead">An online platform bridging nature lovers, researchers, forest experts, and consultants with people, industries, and governments who need sustainable, nature-based solutions.</p>
+  <h1>EcoHeal &#8212; <span class="accent">connecting you with nature.</span></h1>
+  <p class="lead">EcoHeal is a community platform for nature lovers, researchers, and changemakers &#8212; connecting you with nature and with each other to build a sustainable world.</p>
   <div class="hero-actions">
     <button class="btn btn-primary" onclick="openModal('register')">&#127807; Register Free</button>
     <a href="#work" class="btn btn-ghost">See Our Work</a>
@@ -275,7 +274,7 @@
     <div class="story-card">
       <div class="ico">&#127757;</div>
       <h3>About Us</h3>
-      <p>EcoHeal is an online platform which connects people across India and the world. It bridges nature lovers, researchers, forest experts, and consultants with communities, industries, and governments who seek sustainable, nature-based solutions.</p>
+      <p>EcoHeal is an online platform connecting people across India and the world with nature. We bring together nature lovers, researchers, and communities to seek sustainable, nature-based solutions for everyone.</p>
     </div>
     <div class="story-card">
       <div class="ico">&#128154;</div>
@@ -334,9 +333,10 @@
       <p>Nature-related articles written in-house by our team.</p>
     </div>
     <div class="feature-card">
-      <div class="ico">&#129513;</div>
-      <h4>Collaboration</h4>
-      <p>See work created with partner organisations.</p>
+      <div class="ico">&#127956;</div>
+      <h4>Eco Adventure Tour</h4>
+      <p>Nature treks, river &amp; waterfall visits, wildlife experiences and all kinds of nature adventures &#8212; organised by EcoHeal community.</p>
+      <button class="btn btn-red" onclick="openModal('register')" style="margin-top:8px;">&#128308; Join a Tour</button>
     </div>
     <div class="feature-card">
       <div class="ico">&#128218;</div>
@@ -380,8 +380,7 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+<!-- CONTACT --><section id="contact">
   <div class="contact">
     <div>
       <span class="tag" style="background:rgba(255,255,255,0.12);color:#cfe8db;">Contact &amp; Connect</span>
@@ -401,7 +400,7 @@
 <section>
   <div class="campaign">
     <h2>Be part of the campaign</h2>
-    <p>EcoHeal is just beginning &#8212; connecting people, communities, industries and governments with nature experts to build a more resilient, sustainable world. Join us as a founding member.</p>
+    <p>EcoHeal is just beginning &#8212; connecting people, communities, industries and governments with nature to build a more resilient, sustainable world. Join us as a founding member.</p>
     <div class="campaign-actions">
       <button class="btn btn-white" onclick="openModal('register')">&#127807; Register now</button>
       <a href="https://chat.whatsapp.com/DPe1KVWQdnWEZNTyfzsWME" target="_blank" class="btn btn-outline">Join WhatsApp Community</a>
@@ -509,11 +508,6 @@
       content.innerHTML = `
         <h3>&#127807; Join EcoHeal</h3>
         <p class="sub">Become a Natural Lover &#8212; free to join.</p>
-        <button class="btn-google" onclick="googleLogin()">
-          <img src="https://www.google.com/favicon.ico" alt="Google">
-          Continue with Google
-        </button>
-        <div class="divider">or register with email</div>
         <form id="ecoRegisterForm">
           <label>Name</label>
           <input type="text" name="name" placeholder="Your name" required>
@@ -542,11 +536,6 @@
       content.innerHTML = `
         <h3>Welcome back</h3>
         <p class="sub">Log in to continue.</p>
-        <button class="btn-google" onclick="googleLogin()">
-          <img src="https://www.google.com/favicon.ico" alt="Google">
-          Continue with Google
-        </button>
-        <div class="divider">or login with email</div>
         <form id="ecoLoginForm">
           <label>Email</label>
           <input type="email" name="email" placeholder="you@email.com" required>
