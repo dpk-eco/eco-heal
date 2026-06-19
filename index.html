@@ -159,7 +159,8 @@
   .modal label{font-size:0.85rem;font-weight:700;color:var(--forest);display:block;margin-bottom:6px;margin-top:14px;}
   .modal input{width:100%;padding:12px 14px;border-radius:10px;border:2px solid #e6efe9;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color .2s;}
   .modal input:focus{border-color:var(--leaf);}
-  .modal .btn{width:100%;margin-top:16px;}.modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.4rem;color:#9ab3a6;cursor:pointer;}
+  .modal .btn{width:100%;margin-top:16px;}
+  .modal-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:1.4rem;color:#9ab3a6;cursor:pointer;}
   .modal-switch{text-align:center;margin-top:12px;font-size:0.88rem;color:#6b7b71;}
   .modal-switch a{color:var(--leaf);font-weight:700;}
   .divider{display:flex;align-items:center;gap:10px;margin:16px 0;color:#9ab3a6;font-size:0.85rem;}
@@ -194,6 +195,27 @@
     .btn{width:100%;}
     .foot-wrap{flex-direction:column;text-align:center;}
   }
+
+  /* NATURE THREADS */
+  .threads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .thread-card{background:var(--paper);border-radius:var(--r-md);padding:28px;box-shadow:0 6px 20px rgba(27,67,50,0.05);cursor:pointer;transition:transform .2s,box-shadow .2s;}
+  .thread-card:hover{transform:translateY(-6px);box-shadow:0 10px 26px rgba(27,67,50,0.1);}
+  .thread-card .ico{font-size:2.2rem;margin-bottom:12px;}
+  .thread-card h4{font-size:1.2rem;color:var(--forest);font-weight:600;margin-bottom:8px;}
+  .thread-card p{font-size:0.92rem;color:#6b7b71;line-height:1.55;margin-bottom:14px;}.thread-read{color:var(--leaf);font-weight:700;font-size:0.9rem;}
+
+  /* ARTICLE PAGE */
+  .article-inner{max-width:720px;margin:0 auto;padding:40px 24px 80px;}
+  .article-tag{display:inline-block;font-size:0.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf);background:rgba(82,183,136,0.12);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .article-inner h1{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--forest);font-weight:700;margin-bottom:20px;line-height:1.2;}
+  .article-inner h2{font-size:1.4rem;color:var(--forest);font-weight:600;margin:32px 0 14px;}
+  .article-inner h3{font-size:1.15rem;color:var(--forest);font-weight:600;margin:24px 0 10px;}
+  .article-inner p{font-size:1.02rem;line-height:1.8;color:#3d4f44;margin-bottom:16px;}
+  .article-inner ul{margin:0 0 16px 0;padding-left:0;list-style:none;}
+  .article-inner ul li{font-size:1rem;line-height:1.7;color:#3d4f44;margin-bottom:10px;padding-left:24px;position:relative;}
+  .article-inner ul li::before{content:'&#127807;';position:absolute;left:0;}
+  .article-inner strong{color:var(--forest);}
+
 </style>
 </head>
 <body>
@@ -331,6 +353,7 @@
       <div class="ico">&#128240;</div>
       <h4>Read our content</h4>
       <p>Nature-related articles written in-house by our team.</p>
+      <button class="btn btn-red" onclick="openContentHub()" style="margin-top:8px;">&#128308; Read Articles</button>
     </div>
     <div class="feature-card">
       <div class="ico">&#127956;</div>
@@ -380,7 +403,8 @@
   </div>
 </section>
 
-<!-- CONTACT --><section id="contact">
+<!-- CONTACT -->
+<section id="contact">
   <div class="contact">
     <div>
       <span class="tag" style="background:rgba(255,255,255,0.12);color:#cfe8db;">Contact &amp; Connect</span>
@@ -466,6 +490,60 @@
   </div>
 </div>
 
+
+<!-- CONTENT HUB PAGE -->
+<div class="page-overlay" id="contentHubPage">
+  <div class="page-inner">
+    <button class="page-back" onclick="closeContentHub()">&#8592; Back to EcoHeal</button>
+    <div class="section-head" style="margin-bottom:30px;">
+      <span class="tag">Our Content</span><h2>Read our content</h2>
+      <p>Explore nature topics, one circle at a time.</p>
+    </div>
+    <div class="threads-grid">
+      <div class="thread-card" onclick="openArticle('environment')">
+        <div class="ico">&#127757;</div>
+        <h4>Environment</h4>
+        <p>Origin of the term, human-environment relationship, and major environmental philosophies.</p>
+        <span class="thread-read">Explore &#8594;</span>
+      </div>
+      <div class="thread-card" onclick="openArticle('species')">
+        <div class="ico">&#129418;</div>
+        <h4>Basic Concepts</h4>
+        <p>Organisms, species types &#8212; keystone, indicator, umbrella, endemic, invasive &amp; more.</p>
+        <span class="thread-read">Explore &#8594;</span>
+      </div>
+      <div class="thread-card" style="opacity:0.6;cursor:default;">
+        <div class="ico">&#127757;</div>
+        <h4>Ecology</h4>
+        <p>Coming soon.</p>
+      </div>
+      <div class="thread-card" style="opacity:0.6;cursor:default;">
+        <div class="ico">&#127794;</div>
+        <h4>Biome</h4>
+        <p>Coming soon.</p>
+      </div>
+      <div class="thread-card" style="opacity:0.6;cursor:default;">
+        <div class="ico">&#128168;</div>
+        <h4>Pollution</h4>
+        <p>Coming soon.</p>
+      </div>
+      <div class="thread-card" style="opacity:0.6;cursor:default;">
+        <div class="ico">&#127777;</div>
+        <h4>Climate Change</h4>
+        <p>Coming soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE READER PAGE -->
+<div class="page-overlay" id="articlePage">
+  <div class="article-inner">
+    <button class="page-back" onclick="closeArticle()">&#8592; Back to topics</button>
+    <div id="articleContent"></div>
+  </div>
+</div>
+
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
   <div class="modal">
@@ -480,6 +558,80 @@
     'https://fjpatotffxifanfcrfuf.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqcGF0b3RmZnhpZmFuZmNyZnVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNTE1MjAsImV4cCI6MjA5NjkyNzUyMH0.orOON_6xo9drlx6O3SzS9AalOBa0AI5XXaiud8Y6H84'
   );
+
+
+  const articles = {
+    environment: {
+      tag: 'Environment',
+      title: 'What is Environment?',
+      html: `
+        <h2>Origin of the Term</h2>
+        <p>The term <strong>Environment</strong> is derived from the French word <em>Environner</em>, meaning "to surround." Environment encompasses everything that surrounds an organism and influences its existence.</p>
+        <h2>What is Environment?</h2>
+        <p>The environment refers to the sum total of all biotic (living) and abiotic (non-living) components surrounding an individual organism or a community of organisms. These components directly or indirectly influence the origin, growth, survival, development, behaviour, and functioning of living beings.</p>
+        <p>Biotic components include plants, animals, microorganisms, and all other living organisms. Abiotic components include air, water, soil, sunlight, temperature, climate, minerals, and other physical factors. The continuous interaction between these living and non-living components forms ecosystems that sustain life on Earth.</p>
+        <h2>Human&#8211;Environment Relationship</h2>
+        <p>Human beings have continuously modified the natural environment through scientific knowledge, technological advancement, economic activities, and social development. The portion of the environment that is created or significantly modified by humans is known as the <strong>Artificial Environment</strong> or <strong>Cultural Environment</strong>. Urban settlements, transportation systems, industries, agricultural landscapes, and communication networks are examples of the cultural environment.</p>
+        <h2>Major Environmental Philosophies</h2>
+        <h3>1. Environmental Determinism</h3>
+        <p>Argues that nature is the dominant force shaping human life. Climate, landforms, and natural conditions largely determine human culture, economic activities, and civilization. Humans are considered subject to natural forces much like other living organisms.</p>
+        <h3>2. Possibilism</h3>
+        <p>Emerged as a response to Environmental Determinism. It argues that nature provides opportunities rather than fixed limitations. Human intelligence, science, technology, and innovation enable societies to modify and utilize natural resources for development.</p>
+        <h3>3. Neo-Determinism</h3>
+        <p>Presents a balanced approach between humans and nature &#8212; neither completely controlled by nature nor completely independent of it. Sustainable development requires harmony between technological progress and environmental conservation.</p>
+      `
+    },
+    species: {
+      tag: 'Basic Concepts',
+      title: 'Organisms &amp; Species',
+      html: `
+        <h2>Organism</h2>
+        <p>The biosphere is made up of basic functional units called organisms. An organism includes life processes such as birth, growth, and adaptation, combined together. Each organism has a special importance and role in its environment. <strong>A virus is not considered a living organism.</strong></p>
+        <h2>Species</h2>
+        <p>The biological species concept recognizes a species as a population of organisms that can potentially interbreed and produce fertile offspring &#8212; the most common and widely accepted definition.</p>
+        <p>The number of members of a species is called its population/group. Key characteristics include birth, death, immigration, density, and growth rate. Natural barriers limit and control the biological diversity of any given species.</p>
+        <h2>Types of Species</h2>
+        <h3>1. Keystone Species</h3>
+        <p>A species that plays a critical role in maintaining the structure of an ecological community &#8212; other species are highly dependent on it. <strong>Examples:</strong> honeybee, butterfly, peepal tree, fig (banyan) tree.</p>
+        <h3>2. Indicator Species</h3>
+        <p>A species whose presence or condition signals information about environmental conditions. <strong>Examples:</strong> lichen (air purity), frog skin (moisture levels), amphibian skin (environmental cleanliness).</p>
+        <h3>3. Umbrella Species</h3>
+        <p>A species whose conservation automatically protects many other species. <strong>Examples:</strong> tiger, elephant, panda, tortoise.</p>
+        <h3>4. Flagship Species</h3>
+        <p>A species used as a symbol in a conservation campaign to raise awareness. <strong>Examples:</strong> tiger, panda, dolphin.</p>
+        <h3>5. Endemic Species</h3>
+        <p>A species restricted to a specific geographical area. <strong>Examples:</strong> Asiatic lion (Gir forest, India), Sangai deer (Manipur), coelacanth fish (Sulawesi Island).</p>
+        <h3>6. Native Species</h3>
+        <p>A species associated with specific natural conditions of a region; the same species may also occur naturally in other countries.</p>
+        <h3>7. Invasive Species</h3>
+        <p>An outside (non-native) species that causes harm to local native species. <strong>Examples:</strong> water hyacinth, Lantana camara, African catfish.</p>
+        <h3>8. Foundation Species</h3>
+        <p>A species that plays an important role in shaping and maintaining the structure of a community/ecosystem. <strong>Examples:</strong> trees in forests, kelp in oceans, lions in the jungle.</p>
+        <h2>Other Key Concepts</h2>
+        <ul>
+          <li><strong>Parallel species:</strong> Species in different regions occupying a similar ecological niche &#8212; e.g. deer in grassland and antelope/buffalo grazing on grass</li>
+          <li><strong>Guild species:</strong> Species using similar resources in a similar way &#8212; e.g. deer and goats</li>
+          <li>Among coastal/saline areas, mangroves are the dominant foundation species</li>
+        </ul>
+      `
+    }
+  };
+
+  function openContentHub(){ document.getElementById('contentHubPage').classList.add('open'); window.scrollTo(0,0); }
+  function closeContentHub(){ document.getElementById('contentHubPage').classList.remove('open'); }
+
+  function openArticle(key){
+    const a = articles[key];
+    if(!a) return;
+    document.getElementById('articleContent').innerHTML =
+      '<span class="article-tag">'+a.tag+'</span><h1>'+a.title+'</h1>'+a.html;
+    document.getElementById('articlePage').classList.add('open');
+    window.scrollTo(0,0);
+  }
+  function closeArticle(){
+    document.getElementById('articlePage').classList.remove('open');
+    document.getElementById('contentHubPage').classList.add('open');
+  }
 
   function updateNavUI(user){
     const nav = document.getElementById('navAuth');
